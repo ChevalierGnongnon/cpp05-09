@@ -6,11 +6,12 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:57:43 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/02 10:16:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:17:27 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150){
 	std::cout << "Bureaucrat default constructor called" << std::endl;
@@ -71,6 +72,13 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 	return ("Error ! Grade too low !");
 }
 
-void signForm(){
-	
+void Bureaucrat::signForm(Form &form){
+	try {
+		form.beSigned(*this);
+		std::cout << *this << "signed" << form.getName() << std::endl;
+	} catch (std::exception &e){
+		std::cout << *this << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
+
+

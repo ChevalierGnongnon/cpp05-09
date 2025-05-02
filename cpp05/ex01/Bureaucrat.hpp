@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:58:29 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/02 09:43:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:09:23 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BUREAUCRAT_HPP
 # include <string>
 # include <iostream>
+
+class Form;
 
 class Bureaucrat {
 	private :
@@ -43,6 +45,7 @@ class Bureaucrat {
 			public:
 				virtual const char* what() const throw();
 		};
+		void signForm(Form &form);
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src);
