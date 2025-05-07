@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:30:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/02 09:54:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:16:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ class Form {
 		~Form();
 
 		Form &operator=(const Form &src);
+		
+		class GradeTooHighException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 		
 		const std::string getName() const;
 		bool getIsSigned() const;

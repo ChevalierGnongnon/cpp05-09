@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/02 10:14:36 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:06:20 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ isSigned(false),
 sign_grade(signGrade),
 execute_grade(executeGrade){
 	std::cout << "Form constructor called" << std::endl;
+	if (signGrade < 1 || executeGrade < 1)
+		throw Form::GradeTooHighException();
+	else if (signGrade > 150 || executeGrade > 150)
+		throw Form::GradeTooLowException();
 
 }
 
@@ -39,7 +43,9 @@ execute_grade(src.execute_grade){
 }
 
 Form &Form::operator=(const Form &src){
-	this->isSigned = false;
+	if (this != &src) {
+		this->isSigned = src.isSigned;
+	}
 	return (*this);
 }
 
@@ -59,8 +65,25 @@ const int Form::getExecuteGrade()const {
 	return (this->execute_grade);
 }
 
+const char* Form::GradeTooLowException::what() const throw(){
+	return ("Error ! Grade too low !");
+}
+
+const char* Form::GradeTooHighException::what() const throw(){
+	return ("Error ! Grade too high !");
+}
+
+std::ostream &operator<<(std::ostream &out, const Form &src){
+	out << "Name : "<< src.getName() << "Sign grade : " << src.getSignGrade() << "Execute grade : " << src.getExecuteGrade() << "signed : "<< src.getIsSigned();
+	return (out);
+}
+
 void Form::beSigned(Bureaucrat &signer){
-	
+	if (signer.getGrade() <= this->sign_grade) {
+		this->isSigned = true;
+	} else {
+		throw Form::GradeTooLowException();
+	}
 }
 
 

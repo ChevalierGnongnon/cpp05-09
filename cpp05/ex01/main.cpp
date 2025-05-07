@@ -6,11 +6,12 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/02 09:47:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:35:02 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void){
 	std::cout << "<-----------[Bureaucrat default constructor tests]----------->" << std::endl;
@@ -19,6 +20,7 @@ int main(void){
 	} catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
+	
 	std::cout << "<-----------[Bureaucrat constructor tests]----------->" << std::endl;
 	try {
 		Bureaucrat b("Bob", 150);
@@ -39,18 +41,17 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << "<-----------[Copy constructor tests]----------->" << std::endl;
+	std::cout << "<-----------[Bureaucrat copy constructor tests]----------->" << std::endl;
 	Bureaucrat e("Emile", 130);
 	Bureaucrat f(e);
 
-	std::cout << "<-----------[Construction with new tests]----------->" << std::endl;
+	std::cout << "<-----------[Bureaucrat new construction tests]----------->" << std::endl;
 	Bureaucrat *g = new Bureaucrat();
 	Bureaucrat *h = new Bureaucrat("Haymich", 23);
 	Bureaucrat *i = new Bureaucrat(*h);
 	Bureaucrat *j = new Bureaucrat("Jannet", 150);
 	Bureaucrat *k = new Bureaucrat("Karen", 1);
 	
-
 	std::cout << "<-----------[Grade up and down tests]----------->" << std::endl;
 
 	try {
@@ -87,10 +88,69 @@ int main(void){
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << "<-----------[Form default constructor tests]----------->" << std::endl;
+	try {
+		Form fa;
+	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	try {
+		Form fb;
+	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	std::cout << "<-----------[Form constructor tests]----------->" << std::endl;
+	try {
+		Form fc("testc", 45, 45);
+	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	try {
+		Form fd("testd", 150, 150);
+	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		Form fe("teste", 165, 165);
+	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	try {
+		Form ff("testf", 0, 0);
+	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+	
+	std::cout << "<-----------[Form copy constructor tests]----------->" << std::endl;
+	Form fg("a28", 28, 12);
+	Form fh(fg);
+	
+	std::cout << "<-----------[Form new construction tests]----------->" << std::endl;
+	Form *fi = new Form("i", 130, 130);
+	
+	std::cout << "<-----------[Form assignment operator tests]----------->" << std::endl;
+	Form f1("original", 42, 42);
+	Form f2("placeholder", 150, 150);
+
+	f2 = f1;
+
+	std::cout << "Assigned f1 to f2:\n";
+	std::cout << "f1: " << f1 << std::endl;
+	std::cout << "f2: " << f2 << std::endl;
 		
+	std::cout << "<-----------[Sign grade tests]----------->" << std::endl;
+	
+
+	
 	delete g;
 	delete h; 
 	delete i;
 	delete j;
 	delete k;
+	delete fi;
 }

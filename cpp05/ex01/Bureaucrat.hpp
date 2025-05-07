@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:58:29 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/02 14:09:23 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:14:53 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class Bureaucrat {
 		const std::string 	getName() const;
 		int					getGrade() const;
 		
-		public:
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what() const throw();
