@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/07 10:35:02 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:48:00 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,10 +143,22 @@ int main(void){
 	std::cout << "f1: " << f1 << std::endl;
 	std::cout << "f2: " << f2 << std::endl;
 		
-	std::cout << "<-----------[Sign grade tests]----------->" << std::endl;
+	std::cout << "<-----------[Sign form tests]----------->" << std::endl;
+
+	Form signTest("ShrubberyRequest", 50, 25);
+	Bureaucrat goodBureaucrat("Alice", 40); // good enough
+	Bureaucrat badBureaucrat("Dave", 100);  // too low
+
+	std::cout << signTest << std::endl;
+
+	goodBureaucrat.signForm(signTest);
+	std::cout << signTest << std::endl;
+
+	goodBureaucrat.signForm(signTest);
+
+	badBureaucrat.signForm(signTest);
 	
 
-	
 	delete g;
 	delete h; 
 	delete i;
