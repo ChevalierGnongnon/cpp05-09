@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:40:21 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/07 13:40:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/09 17:17:28 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ class PresidentialPardonForm : public AForm{
 		PresidentialPardonForm(PresidentialPardonForm &src);
 		~PresidentialPardonForm();
 		
-		PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
-
-		void execute(Bureaucrat const & executor) const;
+		PresidentialPardonForm	&operator=(const PresidentialPardonForm &src);
+		std::string				getTarget();
+		void 					execute(Bureaucrat const & executor) const;
 };
 
 #endif
