@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/07 11:09:51 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/10 14:33:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ const char* AForm::GradeTooLowException::what() const throw(){
 
 const char* AForm::GradeTooHighException::what() const throw(){
 	return ("Error ! Grade too high !");
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+	return ("Error ! Form not signed !");
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &src){
