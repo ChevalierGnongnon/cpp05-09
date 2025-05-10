@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:40:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/10 13:08:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/10 14:56:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class  RobotomyRequestForm : public AForm{
 	private :
-		const std::string	target;
+		std::string	_target;
 	public :
 		RobotomyRequestForm();
 		RobotomyRequestForm(const std::string &target);
@@ -24,7 +24,7 @@ class  RobotomyRequestForm : public AForm{
 		~RobotomyRequestForm();
 		
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &src);
-
+		std::string				getTarget();
 		void execute(Bureaucrat const & executor) const;
 	
 };
