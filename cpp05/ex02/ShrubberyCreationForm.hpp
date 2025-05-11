@@ -6,17 +6,18 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:40:34 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/07 13:33:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:20:09 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 # include "AForm.hpp"
+# include <fstream>
 
 class ShrubberyCreationForm : public AForm{
 	private :
-		const std::string	target;
+		std::string	_target;
 	public :
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(const std::string &target);
@@ -24,8 +25,8 @@ class ShrubberyCreationForm : public AForm{
 		~ShrubberyCreationForm();
 		
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
-
-		void execute(Bureaucrat const & executor) const;
+		std::string				getTarget();
+		void execute(Bureaucrat const &executor) const;
 	
 };
 
