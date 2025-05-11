@@ -6,14 +6,18 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/07 10:48:00 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/11 15:53:53 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Form.hpp"
 
 int main(void){
+	srand(time(NULL));
 	std::cout << "<-----------[Bureaucrat default constructor tests]----------->" << std::endl;
 	try {
 		Bureaucrat a;
