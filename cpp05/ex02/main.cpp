@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/11 15:53:53 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:45:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main(void){
 	srand(time(NULL));
@@ -92,81 +92,172 @@ int main(void){
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << "<-----------[Form default constructor tests]----------->" << std::endl;
+
+	std::cout << "<-----------[ShrubberyCreation tests]----------->" << std::endl;
 	try {
-		Form fa;
-	} catch (std::exception &e){
+		ShrubberyCreationForm shrub("home");
+		Bureaucrat treeLover("Ellie", 1);
+
+		treeLover.signForm(shrub);
+		shrub.execute(treeLover);
+	}
+	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 	
+	std::cout << "<-----------[Robotomy request  tests]----------->" << std::endl;
 	try {
-		Form fb;
-	} catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
+		RobotomyRequestForm robot("Bender");
+		Bureaucrat technician("Rick", 1);
+
+		technician.signForm(robot);
+		robot.execute(technician);
 	}
-	
-	std::cout << "<-----------[Form constructor tests]----------->" << std::endl;
-	try {
-		Form fc("testc", 45, 45);
-	} catch (std::exception &e){
-		std::cerr << e.what() << std::endl;
-	}
-	
-	try {
-		Form fd("testd", 150, 150);
-	} catch (std::exception &e){
+	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 
 	try {
-		Form fe("teste", 165, 165);
-	} catch (std::exception &e){
+		RobotomyRequestForm robot2("Bender");
+		Bureaucrat technician2("Morty", 1);
+
+		technician2.signForm(robot2);
+		robot2.execute(technician2);
+	}
+	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
-	
+
+	std::cout << "<-----------[Presidential pardon tests]----------->" << std::endl;
 	try {
-		Form ff("testf", 0, 0);
-	} catch (std::exception &e){
+		PresidentialPardonForm form("Bendy");
+		Bureaucrat boss("Mike", 1);
+
+		boss.signForm(form);
+		form.execute(boss);
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "<-----------[other tests]----------->" << std::endl;
+
+	ShrubberyCreationForm shrub("backyard");
+	Bureaucrat tooWeak("Todd", 150);
+
+	try {
+		tooWeak.signForm(shrub);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	Bureaucrat goodGuy("Alex", 1);
+	goodGuy.signForm(shrub);
+
+	try {
+		shrub.execute(tooWeak);
+	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 	
-	std::cout << "<-----------[Form copy constructor tests]----------->" << std::endl;
-	Form fg("a28", 28, 12);
-	Form fh(fg);
+	goodGuy.signForm(shrub); 
 	
-	std::cout << "<-----------[Form new construction tests]----------->" << std::endl;
-	Form *fi = new Form("i", 130, 130);
+	std::cout << "<-----[Shrubbery - invalid signer]----->" << std::endl;
+	try {
+		ShrubberyCreationForm shrub("Garden");
+		Bureaucrat tooWeak("Todd", 150);
+		tooWeak.signForm(shrub);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "<-----[Shrubbery - valid signer, invalid executor]----->" << std::endl;
+	try {
+		ShrubberyCreationForm shrub("Garden");
+		Bureaucrat good("Alice", 1);
+		Bureaucrat weak("Todd", 150);
+		good.signForm(shrub);
+		shrub.execute(weak);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "<-----[Shrubbery - sign twice]----->" << std::endl;
+	try {
+		ShrubberyCreationForm shrub("Garden");
+		Bureaucrat signer("Alice", 1);
+		signer.signForm(shrub);
+		signer.signForm(shrub);
+		shrub.execute(signer);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 	
-	std::cout << "<-----------[Form assignment operator tests]----------->" << std::endl;
-	Form f1("original", 42, 42);
-	Form f2("placeholder", 150, 150);
+	std::cout << "<-----[Robotomy - invalid signer]----->" << std::endl;
+	try {
+		RobotomyRequestForm robo("Marvin");
+		Bureaucrat weakling("Stan", 150);
+		weakling.signForm(robo);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	f2 = f1;
+	std::cout << "<-----[Robotomy - valid signer, invalid executor]----->" << std::endl;
+	try {
+		RobotomyRequestForm robo("Marvin");
+		Bureaucrat smart("Sarah", 1);
+		Bureaucrat tooLow("Stan", 150);
+		smart.signForm(robo);
+		robo.execute(tooLow);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	std::cout << "Assigned f1 to f2:\n";
-	std::cout << "f1: " << f1 << std::endl;
-	std::cout << "f2: " << f2 << std::endl;
-		
-	std::cout << "<-----------[Sign form tests]----------->" << std::endl;
+	std::cout << "<-----[Robotomy - sign twice]----->" << std::endl;
+	try {
+		RobotomyRequestForm robo("Marvin");
+		Bureaucrat strong("Sarah", 1);
+		strong.signForm(robo);
+		strong.signForm(robo);
+		robo.execute(strong);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	Form signTest("ShrubberyRequest", 50, 25);
-	Bureaucrat goodBureaucrat("Alice", 40); // good enough
-	Bureaucrat badBureaucrat("Dave", 100);  // too low
+	std::cout << "<-----[Presidential - invalid signer]----->" << std::endl;
+	try {
+		PresidentialPardonForm pardon("Waluigi");
+		Bureaucrat weak("Jerry", 150);
+		weak.signForm(pardon);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	std::cout << signTest << std::endl;
+	std::cout << "<-----[Presidential - valid signer, invalid executor]----->" << std::endl;
+	try {
+		PresidentialPardonForm pardon("Waluigi");
+		Bureaucrat prez("Sam", 1);
+		Bureaucrat intern("Jerry", 150);
+		prez.signForm(pardon);
+		pardon.execute(intern);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
-	goodBureaucrat.signForm(signTest);
-	std::cout << signTest << std::endl;
-
-	goodBureaucrat.signForm(signTest);
-
-	badBureaucrat.signForm(signTest);
+	std::cout << "<-----[Presidential - sign twice]----->" << std::endl;
+	try {
+		PresidentialPardonForm pardon("Waluigi");
+		Bureaucrat boss("Sam", 1);
+		boss.signForm(pardon);
+		boss.signForm(pardon);
+		pardon.execute(boss);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 	
-
 	delete g;
 	delete h; 
 	delete i;
 	delete j;
 	delete k;
-	delete fi;
 }
