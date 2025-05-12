@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intern.cpp                                         :+:      :+:    :+:   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:20:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 10:52:39 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:28:18 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ const char *Intern::UnknownFormException::what() const throw(){
 
 AForm *Intern::makeForm(const std::string name, const std::string &target){
 	int i = 0;
-	std::string types[4] = {"ShrubberyCreationForm", "PresidentialPardonForm", "RobotomyRequestForm", NULL};
+	std::string types[3] = {"ShrubberyCreationForm", "PresidentialPardonForm", "RobotomyRequestForm"};
 	AForm* (*constructors[3])(const std::string&) = {makeShrubberyForm, makePresidentialPardon, makeRobotomyRequest};
 	while (i < 3 && name.compare(types[i]) != 0){
 		i++;

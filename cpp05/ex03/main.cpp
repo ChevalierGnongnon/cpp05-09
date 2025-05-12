@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 13:58:30 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:27:09 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,17 +247,30 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 	
-	std::cout << "<-----------[Presidential pardon tests]----------->" << std::endl;
+	std::cout << "<-----------[Intern form creation tests]----------->" << std::endl;
 	Intern *internA = new Intern();
-	AForm *A = internA->makeForm("ShrubberyCreationForm", "target");
-	AForm *B = internA->makeForm("aaaaaaaaaaaaaaaaaa", "target2");
-	
+
+	AForm *A = NULL;
+	AForm *B = NULL;
+
+	try {
+		A = internA->makeForm("ShrubberyCreationForm", "target");
+	} catch (std::exception &e) {
+		std::cerr << "Error creating A: " << e.what() << std::endl;
+	}
+
+	try {
+		B = internA->makeForm("aaaaaaaaaaaaaaaaaa", "target2");
+	} catch (std::exception &e) {
+		std::cerr << "Error creating B: " << e.what() << std::endl;
+	}
+
+
 	delete g;
-	delete h; 
+	delete h;
 	delete i;
 	delete j;
 	delete k;
 	delete internA;
 	delete A;
-	delete B;
 }

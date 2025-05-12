@@ -6,14 +6,14 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 13:51:48 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/12 14:03:31 by chhoflac         ###   ########.fr        #
+#    Updated: 2025/05/12 14:12:36 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat
 
 SOURCES = Bureaucrat.cpp \
-		Form.cpp \
+		AForm.cpp \
 		PresidentialPardonForm.cpp \
 		ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp \
