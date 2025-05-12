@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/11 18:00:44 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:09:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm() : name("d1"),
+AForm::AForm() : name("AForm"),
 isSigned(false),
 sign_grade(1),
 execute_grade(1){
