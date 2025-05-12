@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:30:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/11 17:10:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:47:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,16 @@ class AForm {
 			public:
 				virtual const char* what() const throw();
 		};
+		
 		class FileCreationException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
-
+		
+		class UnknownFormException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 		const std::string getName() const;
 		bool getIsSigned() const;
 		const int getSignGrade() const;

@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 13:51:48 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/07 10:50:45 by chhoflac         ###   ########.fr        #
+#    Updated: 2025/05/11 18:34:27 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = Bureaucrat
 
 SOURCES = Bureaucrat.cpp \
 		Form.cpp \
-		main.cpp
+		Presidentu
+		main.cpp 
 
 OBJS = $(SOURCES:.cpp=.o)
 
