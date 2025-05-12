@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:20:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 10:43:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:52:39 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static AForm *makePresidentialPardon(const std::string &target){
 
 static AForm *makeRobotomyRequest(const std::string &target){
 	return (new RobotomyRequestForm(target));
+}
+
+const char *Intern::UnknownFormException::what() const throw(){
+	return ("Error ! invalid form name !");
 }
 
 AForm *Intern::makeForm(const std::string name, const std::string &target){

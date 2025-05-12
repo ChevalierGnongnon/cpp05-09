@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:20:41 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 10:21:19 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:51:57 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ class Intern{
 
 		AForm *makeForm(const std::string name, const std::string &target);
 	
+		class UnknownFormException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 #endif

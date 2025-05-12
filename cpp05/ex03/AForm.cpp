@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 10:48:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:51:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,7 @@ const char* AForm::FileCreationException::what() const throw() {
 	return ("Error ! Invalid file !");
 }
 
-const char *AForm::UnknownFormException::what() const throw(){
-	return ("Error ! invalid form name !");
-}
+
 
 std::ostream &operator<<(std::ostream &out, const AForm &src){
 	out << "Name : "<< src.getName() << "Sign grade : " << src.getSignGrade() << "Execute grade : " << src.getExecuteGrade() << "signed : "<< src.getIsSigned();
