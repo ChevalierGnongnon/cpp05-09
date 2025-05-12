@@ -6,15 +6,13 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 13:51:48 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/01 15:36:03 by chhoflac         ###   ########.fr        #
+#    Updated: 2025/05/12 14:05:06 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat
 
 SOURCES = Bureaucrat.cpp \
-		GradeTooHighException.cpp \
-		GradeTooLowException.cpp \
 		main.cpp
 
 OBJS = $(SOURCES:.cpp=.o)

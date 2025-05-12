@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:57:43 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 13:51:07 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:01:04 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 	return ("Error ! Grade too low !");
 }
 
-void Bureaucrat::signForm(AForm &form){
+void Bureaucrat::signForm(Form &form){
 	try {
 		form.beSigned(*this);
 		std::cout << *this << " signed " << form.getName() << std::endl;
