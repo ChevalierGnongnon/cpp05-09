@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:40:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 12:32:27 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:15:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,9 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 	return (*this);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
+void RobotomyRequestForm::doExecution() const{
 	int res = rand();
 	
-	if (!getIsSigned()){
-		throw FormNotSignedException();
-	}
-	if(executor.getGrade() > this->getExecuteGrade())
-		throw GradeTooLowException();
 	std::cout << "*drilling noises*" << std::endl;
 	if (res % 2 == 0)
 		std::cout << this->_target << " has been robotomized properly." << std::endl;
