@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 13:45:03 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:59:19 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,6 +255,26 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 	
+	std::cout << "<-----[Bureaucrat::executeForm() - success]----->" << std::endl;
+	try {
+		Bureaucrat top("Director", 1);
+		ShrubberyCreationForm form("TestShrub");
+		top.signForm(form);
+		top.executeForm(form);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "<-----[Bureaucrat::executeForm() - failure]----->" << std::endl;
+	try {
+		Bureaucrat intern("Intern", 150);
+		ShrubberyCreationForm form("TestShrub");
+		intern.signForm(form);
+		intern.executeForm(form);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
 	delete g;
 	delete h; 
 	delete i;
