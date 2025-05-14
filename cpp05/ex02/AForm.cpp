@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/14 20:26:35 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:54:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void AForm::beSigned(Bureaucrat &signer){
 	}
 }
 
-void AForm::execute(const Bureaucrat &executor){
+void AForm::execute(const Bureaucrat &executor) const{
 	if (!this->getIsSigned()){
 		throw FormNotSignedException();
 	}
