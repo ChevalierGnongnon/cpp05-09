@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 12:09:43 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:14:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,13 @@ void AForm::beSigned(Bureaucrat &signer){
 	}
 }
 
-
+void AForm::execute(const Bureaucrat &executor) const{
+	if (!this->getIsSigned()){
+		throw FormNotSignedException();
+	}
+	if (this->getExecuteGrade() < executor.getGrade()){
+		throw GradeTooLowException();
+	}
+	
+	
+}

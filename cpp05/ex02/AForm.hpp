@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:30:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/11 17:10:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:21:01 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ class AForm {
 		const int getExecuteGrade()const;
 
 		void	beSigned(Bureaucrat &signer);
-		virtual void execute(Bureaucrat const & executor) const = 0;
-};
+		virtual void execute(Bureaucrat const &executor);
+		virtual void doExecution() const = 0;
+	};
 
 std::ostream &operator<<(std::ostream &out, const AForm &src);
 
