@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 13:29:40 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/15 15:46:47 by chhoflac         ###   ########.fr       */
+/*   Created: 2025/05/15 15:36:37 by chhoflac          #+#    #+#             */
+/*   Updated: 2025/05/15 15:36:57 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-void ScalarConverter::convert(const std::string &represent){
+int main(void){
 	
 }
