@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:40:31 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/11 17:51:00 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:18:39 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
 : AForm("ShrubberyCreationForm", 145, 137), _target(src._target){
     std::cout << "Shrubbery Creation Form copy constructor called" << std::endl;
 	
@@ -40,16 +40,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
+void ShrubberyCreationForm::doExecution() const{
 	std::ofstream file;
 	std::string filename = this->_target + "_shrubbery";
-	int res;
-
-	if (!getIsSigned()){
-		throw FormNotSignedException();
-	}
-	if(executor.getGrade() > this->getExecuteGrade())
-		throw GradeTooLowException();
+	
 	file.open(filename.c_str());
 	if (!file.is_open())
 		throw FileCreationException();
@@ -64,6 +58,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
 	file.close();
 }
 
-std::string ShrubberyCreationForm::getTarget(){
+std::string ShrubberyCreationForm::getTarget() const{
     return (this->_target);
 }

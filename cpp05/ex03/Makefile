@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 13:51:48 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/12 14:12:36 by chhoflac         ###   ########.fr        #
+#    Updated: 2025/05/15 09:44:48 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SOURCES = Bureaucrat.cpp \
 		RobotomyRequestForm.cpp \
 		Intern.cpp \
 		main.cpp 
-
+		
 OBJS = $(SOURCES:.cpp=.o)
 
 RM = rm -rf

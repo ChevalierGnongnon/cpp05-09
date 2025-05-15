@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:20:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 14:28:18 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/15 11:57:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ AForm *Intern::makeForm(const std::string name, const std::string &target){
 		i++;
 	}
 	if (i < 3){
+		std::cout << "Intern creates " << types[i] << std::endl;
 		return (constructors[i](target));
 	}
 	else

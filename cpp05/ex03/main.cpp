@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 14:27:09 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:59:19 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
-#include "intern.hpp"
 
 int main(void){
 	srand(time(NULL));
@@ -163,6 +162,7 @@ int main(void){
 	
 	goodGuy.signForm(shrub); 
 	
+	std::cout << "<-----[Shrubbery - invalid signer]----->" << std::endl;
 	try {
 		ShrubberyCreationForm shrub("Garden");
 		Bureaucrat tooWeak("Todd", 150);
@@ -171,6 +171,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Shrubbery - valid signer, invalid executor]----->" << std::endl;
 	try {
 		ShrubberyCreationForm shrub("Garden");
 		Bureaucrat good("Alice", 1);
@@ -181,6 +182,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Shrubbery - sign twice]----->" << std::endl;
 	try {
 		ShrubberyCreationForm shrub("Garden");
 		Bureaucrat signer("Alice", 1);
@@ -191,6 +193,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 	
+	std::cout << "<-----[Robotomy - invalid signer]----->" << std::endl;
 	try {
 		RobotomyRequestForm robo("Marvin");
 		Bureaucrat weakling("Stan", 150);
@@ -199,6 +202,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Robotomy - valid signer, invalid executor]----->" << std::endl;
 	try {
 		RobotomyRequestForm robo("Marvin");
 		Bureaucrat smart("Sarah", 1);
@@ -209,6 +213,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Robotomy - sign twice]----->" << std::endl;
 	try {
 		RobotomyRequestForm robo("Marvin");
 		Bureaucrat strong("Sarah", 1);
@@ -219,6 +224,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Presidential - invalid signer]----->" << std::endl;
 	try {
 		PresidentialPardonForm pardon("Waluigi");
 		Bureaucrat weak("Jerry", 150);
@@ -227,6 +233,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Presidential - valid signer, invalid executor]----->" << std::endl;
 	try {
 		PresidentialPardonForm pardon("Waluigi");
 		Bureaucrat prez("Sam", 1);
@@ -237,6 +244,7 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Presidential - sign twice]----->" << std::endl;
 	try {
 		PresidentialPardonForm pardon("Waluigi");
 		Bureaucrat boss("Sam", 1);
@@ -247,30 +255,29 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 	
-	std::cout << "<-----------[Intern form creation tests]----------->" << std::endl;
-	Intern *internA = new Intern();
-
-	AForm *A = NULL;
-	AForm *B = NULL;
-
+	std::cout << "<-----[Bureaucrat::executeForm() - success]----->" << std::endl;
 	try {
-		A = internA->makeForm("ShrubberyCreationForm", "target");
+		Bureaucrat top("Director", 1);
+		ShrubberyCreationForm form("TestShrub");
+		top.signForm(form);
+		top.executeForm(form);
 	} catch (std::exception &e) {
-		std::cerr << "Error creating A: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
+	std::cout << "<-----[Bureaucrat::executeForm() - failure]----->" << std::endl;
 	try {
-		B = internA->makeForm("aaaaaaaaaaaaaaaaaa", "target2");
+		Bureaucrat intern("Intern", 150);
+		ShrubberyCreationForm form("TestShrub");
+		intern.signForm(form);
+		intern.executeForm(form);
 	} catch (std::exception &e) {
-		std::cerr << "Error creating B: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
-
 
 	delete g;
-	delete h;
+	delete h; 
 	delete i;
 	delete j;
 	delete k;
-	delete internA;
-	delete A;
 }

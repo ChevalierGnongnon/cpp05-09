@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:58:29 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 13:51:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:42:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ class Bureaucrat {
 			public:
 				virtual const char* what() const throw();
 		};
-		void signForm(AForm &form);
+		void				signForm(AForm &form);
+		void				executeForm(AForm const &form) const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &src);

@@ -6,10 +6,12 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:40:24 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/11 16:12:32 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:15:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctime>
+#include <cstdlib>
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
@@ -23,7 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)
 : AForm("RobotomyRequestForm", 72, 45), _target(src._target){
     std::cout << "Robotomy Request form copy constructor called" << std::endl;
 	
@@ -40,22 +42,16 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 	return (*this);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
-	int res;
+void RobotomyRequestForm::doExecution() const{
+	int res = rand();
 	
-	if (!getIsSigned()){
-		throw FormNotSignedException();
-	}
-	if(executor.getGrade() > this->getExecuteGrade())
-		throw GradeTooLowException();
 	std::cout << "*drilling noises*" << std::endl;
-	res = rand();
 	if (res % 2 == 0)
 		std::cout << this->_target << " has been robotomized properly." << std::endl;
 	else
 		std::cout << this->_target << " hasn't been robotomized, operation failed." << std::endl;
 }
 
-std::string RobotomyRequestForm::getTarget(){
+std::string RobotomyRequestForm::getTarget() const {
     return (this->_target);
 }

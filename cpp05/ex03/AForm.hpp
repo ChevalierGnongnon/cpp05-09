@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 16:30:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 10:51:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:49:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,20 @@ class AForm {
 			public:
 				virtual const char* what() const throw();
 		};
-		
 		class FileCreationException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
+
 		const std::string getName() const;
 		bool getIsSigned() const;
 		const int getSignGrade() const;
 		const int getExecuteGrade()const;
 
 		void	beSigned(Bureaucrat &signer);
-		virtual void execute(Bureaucrat const & executor) const = 0;
-};
+		virtual void execute(Bureaucrat const &executor)const;
+		virtual void doExecution() const = 0;
+	};
 
 std::ostream &operator<<(std::ostream &out, const AForm &src);
 

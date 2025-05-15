@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 09:56:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/12 10:51:11 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:54:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm() : name("d1"),
+AForm::AForm() : name("AForm"),
 isSigned(false),
 sign_grade(1),
 execute_grade(1){
@@ -81,8 +81,6 @@ const char* AForm::FileCreationException::what() const throw() {
 	return ("Error ! Invalid file !");
 }
 
-
-
 std::ostream &operator<<(std::ostream &out, const AForm &src){
 	out << "Name : "<< src.getName() << "Sign grade : " << src.getSignGrade() << "Execute grade : " << src.getExecuteGrade() << "signed : "<< src.getIsSigned();
 	return (out);
@@ -96,4 +94,12 @@ void AForm::beSigned(Bureaucrat &signer){
 	}
 }
 
-
+void AForm::execute(const Bureaucrat &executor) const{
+	if (!this->getIsSigned()){
+		throw FormNotSignedException();
+	}
+	if (this->getExecuteGrade() < executor.getGrade()){
+		throw GradeTooLowException();
+	}
+	this->doExecution();
+}
