@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/14 21:59:19 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/15 12:22:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
+#include "intern.hpp"
 
 int main(void){
 	srand(time(NULL));
@@ -275,6 +276,45 @@ int main(void){
 		std::cerr << e.what() << std::endl;
 	}
 
+		std::cout << "<-----------[Intern Form Creation tests]----------->" << std::endl;
+	Intern someRandomIntern;
+
+	try {
+		AForm* form1 = someRandomIntern.makeForm("ShrubberyCreationForm", "Garden");
+		Bureaucrat executor("Frank", 1);
+		executor.signForm(*form1);
+		executor.executeForm(*form1);
+		delete form1;
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		AForm* form2 = someRandomIntern.makeForm("PresidentialPardonForm", "Neo");
+		Bureaucrat executor("Trinity", 1);
+		executor.signForm(*form2);
+		executor.executeForm(*form2);
+		delete form2;
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		AForm* form3 = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+		Bureaucrat executor("Fry", 1);
+		executor.signForm(*form3);
+		executor.executeForm(*form3);
+		delete form3;
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	try {
+		AForm* failForm = someRandomIntern.makeForm("this does not exist", "nowhere");
+		delete failForm;
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 	delete g;
 	delete h; 
 	delete i;
