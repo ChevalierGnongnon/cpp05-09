@@ -6,12 +6,59 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:29:40 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/17 14:52:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/17 18:12:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <sstream>
+
+static bool isValidValue(const std::string &input){
+	for (int i = 0; i < input.length(); i++){
+		if (!isdigit(input[i]) && input[i] != '-'
+			&& input[i] != '+' && input[i] != '.'
+			&& !(input[i] == 'f' && i == input.length() - 1)){
+				return (false);
+			}
+	}
+	return (true);
+}
+
+static bool findDot(const std::string &input){
+	int nbDots = 0;
+	int j = 0;
+	
+	if (!isValidValue(input)){
+		return (false);
+	}
+	if (input[0] == '-' || input[0] == '+')
+		j++;
+	if (input[j] == '.'){
+		std::cerr << "Error ! invalid input" << std::endl;
+		return (false);
+	}
+	while ( j < input.length()){
+		if (input[j] == '.'){
+			nbDots++;
+		}
+		j++;
+	}
+	if (input[input.length() - 1] == '.') {
+		std::cerr << "Error ! invalid input" << std::endl;
+		return false;
+	}
+	if (nbDots == 1)
+		return (true);
+	std::cerr << "Error ! invalid input" << std::endl;
+	return(false);
+}
+
+static void printBadInput(void){
+	std::cout << "char: imposssible" << std::endl;
+	std::cout << "int: imposssible" << std::endl;
+	std::cout << "float: imposssible" << std::endl;
+	std::cout << "double: imposssible" << std::endl;
+}
 
 void ScalarConverter::convert(const std::string &input){
     bool 				number = true;
@@ -55,7 +102,7 @@ void ScalarConverter::convert(const std::string &input){
                 i++;
             }
             if (!number){
-                std::cerr << "Error ! invalid value" << std::endl;
+				printBadInput();
 				return;
             }
             else {
@@ -63,15 +110,13 @@ void ScalarConverter::convert(const std::string &input){
 				char 	leftover;
 				char	c;
 				
-
-				
 				iss >> value;
 				if (iss.fail()){
-					std::cerr << "Error ! invalid value" << std::endl;
+					printBadInput();
 					return;
 				}
 				if (iss >> leftover){
-					std::cerr << "Error ! garbadge leftover" << std::endl;
+					printBadInput();
 					return;
 				}
 				if (value < 0 || value > 127)
@@ -82,9 +127,40 @@ void ScalarConverter::convert(const std::string &input){
 					std::cout << "char: " << static_cast<char>(value) << std::endl;
 				c = static_cast<char>(value);
 				std::cout << "int: " << static_cast<int>(value)<< std::endl;
-				std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
-				std::cout << "double: " << static_cast<double>(value) << std::endl;
+				std::cout << "float: " << static_cast<float>(value) << ".0f" << std::endl;
+				std::cout << "double: " << static_cast<double>(value) << ".0" << std::endl;
+				return ;
 			}
         }
+		if (findDot(input) && input[input.length() - 1] == 'f'){
+			std::string 		pureValue;
+			float				value;
+			char				garbage;
+			int 				k = 0;
+			
+			while (k < input.length() && input[k] != 'f'){
+				pureValue += input[k];
+				k++;
+			}
+			std::istringstream	parsed(input);
+			parsed >> value;
+			if (parsed.fail()){
+				printBadInput();
+				return;
+			}
+			if (parsed >> garbage){
+				printBadInput();
+				return ;
+			}
+			std::cout << "char: " << input << std::endl;
+            std::cout << "int: " << static_cast<int>(input[0])<< std::endl;
+            std::cout << "float: " << static_cast<float>(input[0]) << "f" << std::endl;
+            std::cout << "double: " << static_cast<double>(input[0]) << std::endl;
+			
+		}
+		if (findDot(input) && input[input.length() - 1] != 'f'){
+			
+		}
+		
     }
 }
