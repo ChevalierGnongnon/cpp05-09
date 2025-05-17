@@ -6,15 +6,17 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:29:40 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/16 17:31:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/17 14:52:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <sstream>
 
 void ScalarConverter::convert(const std::string &input){
-    bool number = true;
-    bool negate = false;
+    bool 				number = true;
+    bool				negate = false;
+	std::istringstream	iss(input);
     
 	if (input == "+inff" || input == "nanf" || input == "-inff"){
         std::cout << "char: impossible" << std::endl;
@@ -43,6 +45,7 @@ void ScalarConverter::convert(const std::string &input){
         if ((input[0] == '-' && input.length() > 1) || isdigit(input[0]))
         {
             int i = 0;
+			
             if (input[0] == '-')
                 i++;
             while (i < input.length()){
@@ -52,11 +55,36 @@ void ScalarConverter::convert(const std::string &input){
                 i++;
             }
             if (!number){
-                
+                std::cerr << "Error ! invalid value" << std::endl;
+				return;
             }
             else {
-                
-            }
+                int		value;
+				char 	leftover;
+				char	c;
+				
+
+				
+				iss >> value;
+				if (iss.fail()){
+					std::cerr << "Error ! invalid value" << std::endl;
+					return;
+				}
+				if (iss >> leftover){
+					std::cerr << "Error ! garbadge leftover" << std::endl;
+					return;
+				}
+				if (value < 0 || value > 127)
+					std::cout << "char: impossible" << std::endl;
+				else if (!isprint(static_cast<char>(value)))
+					std::cout << "char: Non displayable" << std::endl;
+				else
+					std::cout << "char: " << static_cast<char>(value) << std::endl;
+				c = static_cast<char>(value);
+				std::cout << "int: " << static_cast<int>(value)<< std::endl;
+				std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+				std::cout << "double: " << static_cast<double>(value) << std::endl;
+			}
         }
     }
 }
