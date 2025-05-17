@@ -6,7 +6,7 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 13:51:48 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/12 14:11:38 by chhoflac         ###   ########.fr        #
+#    Updated: 2025/05/17 12:24:22 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ RM = rm -rf
 
 CC = c++
 
-FLAGS = -Werror -Wextra -Wall --std=c++98
+FLAGS = -Werror -Wextra -Wall -std=c++98
 
 all: $(NAME)
 

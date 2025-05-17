@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:06:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/15 12:22:17 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/17 12:25:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
-#include "intern.hpp"
+#include "Intern.hpp"
 
 int main(void){
 	srand(time(NULL));

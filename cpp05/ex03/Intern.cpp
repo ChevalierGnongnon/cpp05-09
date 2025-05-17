@@ -6,11 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:20:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/15 11:57:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/17 12:25:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "intern.hpp"
+#include "Intern.hpp"
 
 Intern::Intern(){
 	std::cout << "Intern default constructor called" << std::endl;
