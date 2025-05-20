@@ -1,7 +1,8 @@
 NAME = ScalarConverter
 
-SOURCES = ScalarConverter.cpp \
-		main.cpp
+SOURCES = Serializer.cpp \
+	main.cpp
+		
 
 OBJS = $(SOURCES:.cpp=.o)
 
