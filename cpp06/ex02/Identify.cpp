@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:35:17 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/20 17:05:20 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:07:44 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ void    identify(Base &p){
     } catch (std::bad_cast&) {
 
     }
-    
+    std::cout << "Unknown Type" << std::endl;
 }
