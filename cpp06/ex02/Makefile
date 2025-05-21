@@ -5,14 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/21 15:47:07 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/21 15:47:31 by chhoflac         ###   ########.fr        #
+#    Created: 2025/05/21 15:47:55 by chhoflac          #+#    #+#              #
+#    Updated: 2025/05/21 15:57:04 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScalarConverter
+NAME = Identify
 
-SOURCES = Serializer.cpp \
+SOURCES = Base.cpp \
+	Identify.cpp \
 	main.cpp
 		
 OBJS = $(SOURCES:.cpp=.o)
