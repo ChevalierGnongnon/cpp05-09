@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/21 17:41:00 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/21 17:41:05 by chhoflac         ###   ########.fr        #
+#    Created: 2025/05/21 17:41:18 by chhoflac          #+#    #+#              #
+#    Updated: 2025/05/21 17:41:39 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = templates
 
-SOURCES = main.cpp
+SOURCES = main.cpp \
 		
 OBJS = $(SOURCES:.cpp=.o)
 
