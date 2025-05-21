@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:28:41 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/20 13:50:28 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:00:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class Serializer{
     private:
         Serializer();
         Serializer(const Serializer &src);
+        Serializer &operator=(const Serializer &src);
         ~Serializer();
     public:
         static uintptr_t    serialize(Data *ptr);
