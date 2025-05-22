@@ -6,11 +6,11 @@
 #    By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/21 15:47:07 by chhoflac          #+#    #+#              #
-#    Updated: 2025/05/21 17:23:50 by chhoflac         ###   ########.fr        #
+#    Updated: 2025/05/22 11:20:01 by chhoflac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScalarConverter
+NAME = Serializer
 
 SOURCES = Serializer.cpp \
 	main.cpp

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:29:40 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/21 14:59:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:17:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ ScalarConverter::ScalarConverter(const ScalarConverter &src){
 	
 }
 
-ScalarConverter::ScalarConverter(){
-	
-}
-
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src){
 	return (*this);
+}
+
+ScalarConverter::~ScalarConverter(){
+	
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:28:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/21 15:03:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:19:25 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Serializer::~Serializer(){
 }
 
 Serializer &Serializer::operator=(const Serializer &src){
-    
+    return (*this);
 }
 
 uintptr_t    Serializer::serialize(Data *ptr){
