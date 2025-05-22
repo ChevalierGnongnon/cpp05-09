@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:29:40 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/22 11:17:59 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:49:08 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,55 @@ ScalarConverter::~ScalarConverter(){
 	
 }
 
+static bool isValidFloat(const std::string &input) {
+	if (input.length() < 4)
+		return (false);
 
+	if (input[input.length() - 1] != 'f')
+		return (false);
 
-static bool isValidValue(const std::string &input){
-	for (int i = 0; i < input.length(); i++){
-		if (!isdigit(input[i]) && input[i] != '-'
-			&& input[i] != '+' && input[i] != '.'
-			&& !(input[i] == 'f' && i == input.length() - 1)){
-				return (false);
+	std::string core = input.substr(0, input.length() - 1);
+
+	// count dots
+	int nbDots = 0;
+	size_t dotPos = 0;
+	bool dotFound = false;
+	for (size_t i = 0; i < core.length(); ++i) {
+		if (core[i] == '.') {
+			nbDots++;
+			if (!dotFound) {
+				dotPos = i;
+				dotFound = true;
 			}
+		}
 	}
-	return (true);
+
+	if (nbDots != 1 || dotPos == 0 || dotPos == core.length() - 1)
+		return (false);
+
+	bool digitBefore = false;
+	bool digitAfter = false;
+
+	size_t i = 0;
+	if (core[0] == '+' || core[0] == '-')
+		i++;
+
+	for (; i < dotPos; ++i)
+		if (isdigit(core[i]))
+			digitBefore = true;
+
+	for (size_t j = dotPos + 1; j < core.length(); ++j)
+		if (isdigit(core[j]))
+			digitAfter = true;
+
+	return (digitBefore && digitAfter);
 }
+
 
 static bool findDot(const std::string &input){
 	int nbDots = 0;
 	int j = 0;
-	if (!isValidValue(input)) {
-		return (false);
-	}
+
 	if (input[0] == '-' || input[0] == '+') {
 		j++;
 	}
@@ -63,10 +93,7 @@ static bool findDot(const std::string &input){
 	if (input[input.length() - 1] == '.') {
 		return (false);
 	}
-	if (nbDots == 1) {
-		return (true);
-	}
-	return (false);
+	return (nbDots == 1);
 }
 
 static void printBadInput(void){
@@ -134,10 +161,11 @@ static void handleFloatInput(const std::string &input){
 	else
 		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(value)<< std::endl;
+	
+	std::cout << "float: " << value;
 	if (value == static_cast<int>(value))
-		std::cout << "float: " << value << ".0f" << std::endl;
-	else
-		std::cout << "float: " << value << "f" << std::endl;
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
@@ -165,61 +193,45 @@ static void handleDoubleInput(const std::string &input){
 		std::cout << "float: " << static_cast<float>(parsed) << ".0f" << std::endl;
 	else
 		std::cout << "float: " << static_cast<float>(parsed) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(parsed) << std::endl;
+	std::cout << "double: " << parsed;
+	if (parsed == static_cast<int>(parsed))
+		std::cout << ".0";
+	std::cout << std::endl;
 }
 
 void ScalarConverter::convert(const std::string &input){
-    bool 				number = true;
-	std::istringstream	iss(input);
-    
-	if (input == "+inff" || input == "nanf" || input == "-inff"){
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << input << std::endl;
-        std::cout << "double: " << input << std::endl;
-        return ;
-    }
-    else if (input == "nan" || input == "+inf" || input == "-inf"){
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: " << input << "f" << std::endl;
-        std::cout << "double: " << input << std::endl;
-        return;
-    }
-    else {
-        if (input.length() == 1 && isprint(input[0])){
-            handleCharInput(input);
-            return;
-        }
-		if (((input[0] == '-' || input[0] == '+') && input.length() > 1) || isdigit(input[0]))
-        {
-            int i = 0;
-			
-            if (input[0] == '-' || input[0] == '+')
-                i++;
-            while (i < input.length()){
-                if (!isdigit(input[i])){
-                    number = false;
-                }
-                i++;
-            }
-            if (!number){
-				printBadInput();
-				return;
-            }
-            else {
-                handleIntInput(input, iss);
-				return ;
-			}
-        }
-		if (findDot(input) && input[input.length() - 1] == 'f'){
-			handleFloatInput(input);
-			return;
-		}
-		if (findDot(input) && input[input.length() - 1] != 'f'){
-			handleDoubleInput(input);
-			return ;
-		}
-		printBadInput();
-    }
+    std::istringstream iss(input);
+
+	if (input == "+inff" || input == "-inff" || input == "nanf") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << input << std::endl;
+		std::cout << "double: " << input.substr(0, input.length() - 1) << std::endl;
+		return;
+	}
+	if (input == "+inf" || input == "-inf" || input == "nan") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << input << "f" << std::endl;
+		std::cout << "double: " << input << std::endl;
+		return;
+	}
+	if (input.length() == 1 && isprint(input[0])) {
+		handleCharInput(input);
+		return;
+	}
+	if ((((input[0] == '-' || input[0] == '+') && input.length() > 1) || isdigit(input[0]))
+		&& !findDot(input)) {
+		handleIntInput(input, iss);
+		return;
+	}
+	if (isValidFloat(input)) {
+		handleFloatInput(input);
+		return;
+	}
+	if (findDot(input) && input[input.length() - 1] != 'f') {
+		handleDoubleInput(input);
+		return;
+	}
+	printBadInput();
 }
