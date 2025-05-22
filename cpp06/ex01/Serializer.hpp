@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:28:41 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/21 15:00:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:17:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Serializer{
         ~Serializer();
     public:
         static uintptr_t    serialize(Data *ptr);
-        static Data        *deserialise(uintptr_t raw);
+        static Data        *deserialize(uintptr_t raw);
 };
 
 #endif

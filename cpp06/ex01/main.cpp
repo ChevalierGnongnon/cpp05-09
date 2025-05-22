@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:50:53 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/20 15:10:46 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:17:41 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(void){
 
     uintptr_t test1 = Serializer::serialize(d1);
     std::cout << test1 << std::endl;
-    Data *red1 = Serializer::deserialise(test1);
+    Data *red1 = Serializer::deserialize(test1);
     std::cout << red1->str << " " << red1->test << " " << red1->valInt << std::endl;
 
     Data *d2 = new Data;
@@ -31,7 +31,7 @@ int main(void){
 
     uintptr_t test2 = Serializer::serialize(d2);
     std::cout << test2 << std::endl;
-    Data *red2 = Serializer::deserialise(test2);
+    Data *red2 = Serializer::deserialize(test2);
     std::cout << red2->str << " " << red2->test << " " << red2->valInt << std::endl;
 
     Data *d3 = new Data;
@@ -41,7 +41,7 @@ int main(void){
 
     uintptr_t test3 = Serializer::serialize(d3);
     std::cout << test3 << std::endl;
-    Data *red3 = Serializer::deserialise(test3);
+    Data *red3 = Serializer::deserialize(test3);
     std::cout << red3->str << " " << red3->test << " " << red3->valInt << std::endl;
 
     delete d1;

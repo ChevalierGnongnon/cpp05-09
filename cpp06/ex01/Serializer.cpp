@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:28:14 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/22 11:19:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:17:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ uintptr_t    Serializer::serialize(Data *ptr){
     return (res);
 }
 
-Data        *Serializer::deserialise(uintptr_t raw){
+Data        *Serializer::deserialize(uintptr_t raw){
     Data *res;
 
     res = reinterpret_cast<Data *>(raw);
