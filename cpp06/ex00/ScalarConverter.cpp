@@ -6,12 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:29:40 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/22 12:49:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:00:35 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <sstream>
+#include <limits>
 
 ScalarConverter::ScalarConverter(){
 	
@@ -111,27 +112,38 @@ static void handleCharInput(const std::string &input){
 }
 
 static void handleIntInput(const std::string &input, std::istringstream &iss){
-	int		value;
-	char 	leftover;
-	
-	iss >> value;
-	if (iss.fail()){
+	long long check;
+	char leftover;
+
+	std::istringstream test(input);
+	test >> check;
+	if (test.fail() || test >> leftover ||
+		check > std::numeric_limits<int>::max() ||
+		check < std::numeric_limits<int>::min()) {
 		printBadInput();
 		return;
 	}
-	if (iss >> leftover){
-		printBadInput();
-		return;
-	}
+
+	int value = static_cast<int>(check);
+
 	if (value < 0 || value > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (!isprint(static_cast<char>(value)))
 		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: " << static_cast<char>(value) << std::endl;
-	std::cout << "int: " << static_cast<int>(value)<< std::endl;
-	std::cout << "float: " << static_cast<float>(value) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(value) << ".0" << std::endl;
+		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
+
+	std::cout << "int: " << value << std::endl;
+
+	std::cout << "float: " << static_cast<float>(value);
+	if (value == static_cast<int>(value))
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+
+	std::cout << "double: " << static_cast<double>(value);
+	if (value == static_cast<int>(value))
+		std::cout << ".0";
+	std::cout << std::endl;
 }
 
 static void handleFloatInput(const std::string &input){

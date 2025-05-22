@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 15:36:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/18 14:26:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:00:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ int main(void){
     ScalarConverter::convert("2147483648");
     ScalarConverter::convert("-2147483648");
     ScalarConverter::convert("-2147483649");
+
 }
