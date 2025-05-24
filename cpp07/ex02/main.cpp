@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 14:26:56 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/24 15:45:04 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/24 15:49:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(void){
 	std::cout << "b[0] = " << b[0] << " (should be 0)" << std::endl;
 
 	Array<int> c;
-	c = a; // ASSIGNMENT OPERATOR
+	c = a;
 	a[1] = 888;
 
 	std::cout << "c[1] = " << c[1] << " (should be 10)" << std::endl;
@@ -48,6 +48,6 @@ int main(void){
 		std::cout << "TRYING OOB" << std::endl;
 		std::cout << a[999] << std::endl;
 	} catch (const std::exception &e) {
-		std::cout << "Caught exception: out-of-bounds access!" << std::endl;
+		std::cout << "oob access" << std::endl;
 	}
 }
