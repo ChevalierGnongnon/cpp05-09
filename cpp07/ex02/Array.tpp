@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 12:57:25 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/24 14:41:06 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/24 15:17:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,16 @@ Array<T> &Array<T>::operator=(const Array<T> &src){
 			this->data[i] = src.data[i];
 	}
 	return (*this);
+}
+
+template <typename T>
+unsigned int Array<T>::size() const{
+	return (this->_size);
+}
+
+template <typename T>
+T &Array<T>::operator[](unsigned int i){
+	if (i > this->_size - 1)
+		throw std::exception();
+	return (this->data[i]);
 }

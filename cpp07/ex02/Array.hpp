@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:30:03 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/05/24 13:32:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/05/24 14:45:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Array{
 		~Array();
 		Array(const Array &src);
 		Array &operator = (const Array &src);
+		T &operator[](unsigned int i);
+		unsigned int size() const;
 	
 };
 
